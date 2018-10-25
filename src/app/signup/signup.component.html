@@ -3,26 +3,30 @@
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
             <h1>SB Admin BS4 Angular5</h1>
-            <form role="form">
+            <form role="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
+                        <input type="text" class="form-control input-underline input-lg" id="name" formControlName="name" placeholder="Full Name">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text" class="form-control input-underline input-lg" id="email" formControlName="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="password" class="form-control input-underline input-lg" id="password" formControlName="password" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
+                        <input type="password" class="form-control input-underline input-lg" id="repassword" formControlName="repassword" placeholder="Repeat Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+                <button class="btn rounded-btn"
+                        type="submit"
+                        [disabled]="signupForm.invalid">Register</button>
+                <button class="btn rounded-btn"
+                        type="submit" [routerLink]="['/login']">Log in</button>
             </form>
+            <p class="text-danger">{{ errorMessage }}</p>
         </div>
     </div>
 </div>
